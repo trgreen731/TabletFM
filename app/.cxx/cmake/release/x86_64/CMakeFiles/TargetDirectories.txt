@@ -1,0 +1,3 @@
+C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/.cxx/cmake/release/x86_64/CMakeFiles/echo.dir
+C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/.cxx/cmake/release/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/.cxx/cmake/release/x86_64/CMakeFiles/rebuild_cache.dir

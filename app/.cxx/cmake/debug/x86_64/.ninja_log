@@ -1,0 +1,16 @@
+# ninja log v5
+18	255	636529915	CMakeFiles/echo.dir/kiss_fft/kiss_fft.c.o	a5f3bb4a7830f861
+12	593	636529916	CMakeFiles/echo.dir/ece420_lib.cpp.o	65b72aa958eccbf3
+0	671	636529916	CMakeFiles/echo.dir/audio_common.cpp.o	d55253b0e5432075
+4	726	636529916	CMakeFiles/echo.dir/audio_player.cpp.o	1727369a894aef57
+9	742	636529916	CMakeFiles/echo.dir/debug_utils.cpp.o	3a84c04d7eae5f1b
+6	786	636529916	CMakeFiles/echo.dir/audio_main.cpp.o	14449166088a174f
+14	793	636529916	CMakeFiles/echo.dir/audio_recorder.cpp.o	65991759ddebbb2b
+21	831	636529916	CMakeFiles/echo.dir/ece420_main.cpp.o	e1469fbe8ec0679c
+831	980	636529916	C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/build/intermediates/cmake/debug/obj/x86_64/libecho.so	1931b5cdca83c55f
+3	513	636530759	CMakeFiles/echo.dir/ece420_main.cpp.o	e1469fbe8ec0679c
+513	624	636530759	C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/build/intermediates/cmake/debug/obj/x86_64/libecho.so	1931b5cdca83c55f
+2	468	636531233	CMakeFiles/echo.dir/ece420_main.cpp.o	e1469fbe8ec0679c
+468	577	636531233	C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/build/intermediates/cmake/debug/obj/x86_64/libecho.so	1931b5cdca83c55f
+2	485	636533710	CMakeFiles/echo.dir/ece420_main.cpp.o	e1469fbe8ec0679c
+485	595	636533710	C:/Users/trgre/ECE420/Lab5/ece420_lab5/lab5/app/build/intermediates/cmake/debug/obj/x86_64/libecho.so	1931b5cdca83c55f
