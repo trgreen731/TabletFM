@@ -11,6 +11,8 @@
 #include "debug_utils.h"
 
 void FMSynthesis(float* bufferOut);
+float getAmpVal();
+float getModVal();
 void ece420ProcessFrame(sample_buf *dataBuf);
 
 #endif //ECE420_MAIN_H

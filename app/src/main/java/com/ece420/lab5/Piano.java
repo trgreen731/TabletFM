@@ -36,6 +36,10 @@ public class Piano extends View {
         key_freq = new double[]{130.81, 146.83, 138.59, 164.81, 155.56, 174.61, 195.99, 184.99, 220.00,
                                 207.65, 246.94, 233.08, 261.63, 293.66, 277.18, 329.63, 311.13, 349.23,
                                 391.99, 369.99, 440.00, 415.30, 493.88, 466.16};
+        //make the envelope functions and wavetable right here
+        initTable(0);
+        initAmpEnv(4800, 4800, 70, 4800);
+        initModEnv(4800, 4800, 70, 4800);
     }
 
     @Override
@@ -152,4 +156,7 @@ public class Piano extends View {
     };
 
     public static native void writeNewFreq(double freq);
+    public static native void initTable(int wave);
+    public static native void initAmpEnv(int A, int D, int S, int R);
+    public static native void initModEnv(int A, int D, int S, int R);
 }
