@@ -1,0 +1,5 @@
+ninja: Entering directory `C:\Users\trgre\ECE420\FinalProject\TabletFM\app\.cxx\cmake\debug\x86'
+[1/4] Building CXX object CMakeFiles/echo.dir/ece420_main.cpp.o
+[2/4] Building CXX object CMakeFiles/echo.dir/audio_recorder.cpp.o
+[3/4] Building CXX object CMakeFiles/echo.dir/audio_main.cpp.o
+[4/4] Linking CXX shared library C:\Users\trgre\ECE420\FinalProject\TabletFM\app\build\intermediates\cmake\debug\obj\x86\libecho.so

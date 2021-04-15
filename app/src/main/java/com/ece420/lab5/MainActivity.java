@@ -18,6 +18,7 @@ package com.ece420.lab5;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.Manifest;
@@ -43,7 +44,6 @@ public class MainActivity extends Activity
     // UI Variables
     Button   controlButton;
     TextView statusView;
-    TextView freq_status_view;
     String  nativeSampleRate;
     String  nativeSampleBufSize;
     boolean supportRecording;
@@ -51,14 +51,14 @@ public class MainActivity extends Activity
     // Static Values
     private static final int AUDIO_ECHO_REQUEST = 0;
     private static final int FRAME_SIZE = 1024;
-    private static final int MIN_FREQ = 50;
+    private static final int MIN_VAL = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
-        super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        super.setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         // Google NDK Stuff
         controlButton = (Button)findViewById((R.id.capture_control_button));
@@ -67,24 +67,111 @@ public class MainActivity extends Activity
         // initialize native audio system
         updateNativeAudioUI();
         if (supportRecording) {
-            // Native Setting: 48k Hz Sampling Frequency and 128 Frame Size
+            // Native Setting: 48k Hz Sampling Frequency and 1024 Frame Size
             createSLEngine(Integer.parseInt(nativeSampleRate), FRAME_SIZE);
         }
 
         // Setup UI
-        freq_status_view = (TextView) findViewById(R.id.newFreqStatusText);
-        freq_status_view.setText("Desired Output Frequency: 420 Hz");
-        // Setup Seekbar and Initialize
-        SeekBar mSeekbar = (SeekBar) findViewById(R.id.freqSeekBar);
-        mSeekbar.setProgress(420);
-        writeNewFreq(420);
-        mSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        // Setup Seekbars and Initialize
+        SeekBar AmpAttack = (SeekBar) findViewById(R.id.AmpAttack);
+        SeekBar AmpDecay = (SeekBar) findViewById(R.id.AmpDecay);
+        SeekBar AmpSustain = (SeekBar) findViewById(R.id.AmpSustain);
+        SeekBar AmpRelease = (SeekBar) findViewById(R.id.AmpRelease);
+        SeekBar ModAttack = (SeekBar) findViewById(R.id.ModAttack);
+        SeekBar ModDecay = (SeekBar) findViewById(R.id.ModDecay);
+        SeekBar ModSustain = (SeekBar) findViewById(R.id.ModSustain);
+        SeekBar ModRelease = (SeekBar) findViewById(R.id.ModRelease);
+        AmpAttack.setProgress(0);
+        AmpDecay.setProgress(0);
+        AmpSustain.setProgress(0);
+        AmpRelease.setProgress(0);
+        ModAttack.setProgress(0);
+        ModDecay.setProgress(0);
+        ModSustain.setProgress(0);
+        ModRelease.setProgress(0);
+        AmpAttack.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
         {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
             {
-                int newFreq = progress + MIN_FREQ;
-                freq_status_view.setText("Desired Output Frequency: " + Integer.toString(newFreq) + " Hz");
-                writeNewFreq(newFreq);
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        AmpDecay.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        AmpSustain.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        AmpRelease.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        ModAttack.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        ModDecay.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        ModSustain.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+            public void onStopTrackingTouch(SeekBar seekBar) {}
+        });
+        ModRelease.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener()
+        {
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
+            {
+                int newVal = progress + MIN_VAL;
+                //might want to use this value for something
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {}
@@ -148,8 +235,12 @@ public class MainActivity extends Activity
             deleteSLBufferQueueAudioPlayer();
         }
         isPlaying = !isPlaying;
-        controlButton.setText(getString((isPlaying == true) ?
-                R.string.StopEcho: R.string.StartEcho));
+        controlButton.setText(getString((isPlaying == true) ? R.string.StopEcho: R.string.StartEcho));
+
+        if(isPlaying) {
+            Intent myIntent = new Intent(MainActivity.this, PianoActivity.class);
+            startActivityForResult(myIntent, 0);
+        }
     }
 
     public void onEchoClick(View view) {
@@ -256,6 +347,4 @@ public class MainActivity extends Activity
     public static native void deleteAudioRecorder();
     public static native void startPlay();
     public static native void stopPlay();
-
-    public static native void writeNewFreq(int freq);
 }

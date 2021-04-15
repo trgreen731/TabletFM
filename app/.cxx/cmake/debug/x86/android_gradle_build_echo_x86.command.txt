@@ -1,0 +1,7 @@
+Executable : C:\Users\trgre\AppData\Local\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
+arguments : 
+-C
+C:\Users\trgre\ECE420\FinalProject\TabletFM\app\.cxx\cmake\debug\x86
+echo
+jvmArgs : 
+
