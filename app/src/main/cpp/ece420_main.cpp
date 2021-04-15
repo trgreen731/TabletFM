@@ -14,8 +14,11 @@ JNIEXPORT void JNICALL
 Java_com_ece420_lab5_Piano_writeNewFreq(JNIEnv *env, jclass, jdouble);
 }
 
-#define FRAME_SIZE 1024
-#define F_S 48000
+#define FRAME_SIZE  1024
+#define F_S         48000
+#define PI          3.1415
+
+int sample_count = 0;
 
 // We have two variables here to ensure that we never change the desired frequency while
 // processing a frame. Thread synchronization, etc. Setting to 300 is only an initializer.
@@ -25,6 +28,14 @@ double FREQ_NEW = 0;
 void FMSynthesis(float* bufferOut) {
 
     // implement our FM synthesis algorithm right here
+
+    for(int i=0; i<FRAME_SIZE; i++){
+        bufferOut[i] = (float)sin(FREQ_NEW * 2 * PI * sample_count / F_S) * 10000;
+        sample_count++;
+        if(sample_count >= F_S){
+            sample_count = 0;
+        }
+    }
 
     //LOGD("Key Frequency Detected: %f\r\n", FREQ_NEW);
 }
@@ -42,10 +53,6 @@ void ece420ProcessFrame(sample_buf *dataBuf) {
 
     //perform our FMSynthesis right here
     FMSynthesis(bufferOut);
-
-    for(int i=0; i<FRAME_SIZE; i++){
-        bufferOut[i] = (float)sin(FREQ_NEW * i / F_S) * 1000;
-    }
 
     for (int i = 0; i < FRAME_SIZE; i++) {
         int16_t newVal = (int16_t) bufferOut[i];
