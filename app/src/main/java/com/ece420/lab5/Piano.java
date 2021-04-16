@@ -40,6 +40,7 @@ public class Piano extends View {
         initTable(0);
         initAmpEnv(4800, 4800, 70, 4800);
         initModEnv(4800, 4800, 70, 4800);
+        initModIdx((float)0.0, (float)5.0);
     }
 
     @Override
@@ -159,4 +160,5 @@ public class Piano extends View {
     public static native void initTable(int wave);
     public static native void initAmpEnv(int A, int D, int S, int R);
     public static native void initModEnv(int A, int D, int S, int R);
+    public static native void initModIdx(float min, float max);
 }

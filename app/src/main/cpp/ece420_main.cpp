@@ -32,6 +32,12 @@ JNIEXPORT void JNICALL
 Java_com_ece420_lab5_Piano_initModEnv(JNIEnv *env, jclass, jint, jint, jint, jint);
 }
 
+// JNI Function to set the modulation envelope on startup
+extern "C" {
+JNIEXPORT void JNICALL
+Java_com_ece420_lab5_Piano_initModIdx(JNIEnv *env, jclass, jfloat, jfloat);
+}
+
 //constants
 #define FRAME_SIZE          1024
 #define F_S                 48000
@@ -49,6 +55,10 @@ Java_com_ece420_lab5_Piano_initModEnv(JNIEnv *env, jclass, jint, jint, jint, jin
 // R is the number of samples until reaching 0 value after release
 int AmpEnv[4] = {4800, 4800, 70, 4800};
 int ModEnv[4] = {4800, 4800, 70, 4800};
+
+//modulation index values that are also set on initialization
+float modIdxMax = 5.0;
+float modIdxMin = 0.0;
 
 // wavetable space - holds a simple sin wave
 int wavetable[TABLE_SIZE];
@@ -107,21 +117,22 @@ void FMSynthesis(float* bufferOut) {
             //update the modulation output with these new register values
             mod_out = (int)(wavetable[mod_phase >> (FIXED_SHIFT - TABLE_BITS)] * getModVal());
             mod_out = mod_out / F_S;
-            mod_out = mod_out * 5;      //this is the adjusting of the envelope based on modulation index
-        }
 
-        //update the release count and the release_flag
-        if(release_flag == true){
-            release_count -= FRAME_SIZE;
-            if(release_count <= 0){
-                release_flag = false;
-                sample_count = 0;
+            //update the release count and sample count for each element
+            sample_count++;
+            if(release_flag == true){
+                release_count--;
             }
         }
-        sample_count += FRAME_SIZE;
+
+        //check whether release has ended
+        if(release_flag == true && release_count <= 0){
+            release_flag = false;
+            sample_count = 0;
+        }
     }
 
-    LOGD("Key Frequency Detected: %d\r\n", sample_count);
+    //LOGD("Key Frequency Detected: %d\r\n", sig_out);
 }
 
 //get a float of the current amplitude envelope value (from 0 to 1)
@@ -131,7 +142,7 @@ float getAmpVal(){
         out = (1.0) * (float)sample_count/AmpEnv[0];
     }
     else if(sample_count <= AmpEnv[0] + AmpEnv[1]){
-        out = 1.0 - (((float)AmpEnv[2]/100 - 1.0) * (float)(sample_count - AmpEnv[0])/AmpEnv[1]);
+        out = 1.0 - ((1.0 - (float)AmpEnv[2]/100) * (float)(sample_count - AmpEnv[0])/AmpEnv[1]);
     }
     else if(release_flag == false){
         out = (float)AmpEnv[2]/100;
@@ -145,14 +156,14 @@ float getAmpVal(){
     return out;
 }
 
-//get a float of the current modulation envelope value (from 0 to 1)
+//get a float of the current modulation envelope value (from min to max mod index value)
 float getModVal(){
     float out;
     if(sample_count <= ModEnv[0]){
         out = (1.0) * (float)sample_count/ModEnv[0];
     }
     else if(sample_count <= ModEnv[0] + ModEnv[1]){
-        out = 1.0 - (((float)ModEnv[2]/100 - 1.0) * (float)(sample_count - ModEnv[0])/ModEnv[1]);
+        out = 1.0 - ((1.0 - (float)ModEnv[2]/100) * (float)(sample_count - ModEnv[0])/ModEnv[1]);
     }
     else if(release_flag == false){
         out = (float)ModEnv[2]/100;
@@ -163,7 +174,8 @@ float getModVal(){
     else{
         out = 0.0;
     }
-    return out;
+    //include modulation index stuff here
+    return (out * (modIdxMax - modIdxMin)) + modIdxMin;
 }
 
 void ece420ProcessFrame(sample_buf *dataBuf) {
@@ -243,4 +255,10 @@ Java_com_ece420_lab5_Piano_initModEnv(JNIEnv *env, jclass, jint A, jint D, jint 
     ModEnv[2] = S;
     ModEnv[3] = R;
     return;
+}
+
+JNIEXPORT void JNICALL
+Java_com_ece420_lab5_Piano_initModIdx(JNIEnv *env, jclass, jfloat min, jfloat max) {
+    modIdxMin = min;
+    modIdxMax = max;
 }
