@@ -39,9 +39,10 @@ public class Piano extends View {
                                 783.99, 738.99, 880.00, 830.61, 987.76, 932.33};
         //make the envelope functions and wavetable right here
         initTable(0);
-        initAmpEnv(4800, 4800, 70, 4800);
-        initModEnv(4800, 4800, 70, 4800);
-        initModIdx((float)0.0, (float)5.0);
+        initAmpEnv(300, 1200, 0, 0);
+        initModEnv(300, 1200, 0, 0);
+        initModIdx((float)10.0, (float)20.0);
+        initModFactor((float)2.11);
     }
 
     @Override
@@ -162,4 +163,5 @@ public class Piano extends View {
     public static native void initAmpEnv(int A, int D, int S, int R);
     public static native void initModEnv(int A, int D, int S, int R);
     public static native void initModIdx(float min, float max);
+    public static native void initModFactor(float factor);
 }

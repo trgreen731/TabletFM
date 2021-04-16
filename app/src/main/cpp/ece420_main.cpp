@@ -38,6 +38,13 @@ JNIEXPORT void JNICALL
 Java_com_ece420_lab5_Piano_initModIdx(JNIEnv *env, jclass, jfloat, jfloat);
 }
 
+// JNI Function to set the modulation envelope on startup
+extern "C" {
+JNIEXPORT void JNICALL
+Java_com_ece420_lab5_Piano_initModFactor(JNIEnv *env, jclass, jfloat);
+}
+
+
 //constants
 #define FRAME_SIZE          1024
 #define F_S                 48000
@@ -59,6 +66,9 @@ int ModEnv[4] = {4800, 4800, 70, 4800};
 //modulation index values that are also set on initialization
 float modIdxMax = 5.0;
 float modIdxMin = 0.0;
+
+//mod frequency multiple set during initialization
+float modFactor = 2.11;
 
 // wavetable space - holds a simple sin wave
 int wavetable[TABLE_SIZE];
@@ -132,7 +142,7 @@ void FMSynthesis(float* bufferOut) {
         }
     }
 
-    //LOGD("Key Frequency Detected: %d\r\n", sig_out);
+    //LOGD("Key Frequency Detected: %d\r\n", AmpEnv[1]);
 }
 
 //get a float of the current amplitude envelope value (from 0 to 1)
@@ -193,7 +203,7 @@ void ece420ProcessFrame(sample_buf *dataBuf) {
             release_count = 0;
             sample_count = 0;
             car_freq = (int)((FREQ_NEW_ANDROID/F_S)*(1<<FIXED_SHIFT));
-            mod_freq = (int)((FREQ_NEW_ANDROID/F_S)*(1<<FIXED_SHIFT));
+            mod_freq = (int)((modFactor*FREQ_NEW_ANDROID/F_S)*(1<<FIXED_SHIFT));
         }
         else{
             release_flag = true;
@@ -261,4 +271,9 @@ JNIEXPORT void JNICALL
 Java_com_ece420_lab5_Piano_initModIdx(JNIEnv *env, jclass, jfloat min, jfloat max) {
     modIdxMin = min;
     modIdxMax = max;
+}
+
+JNIEXPORT void JNICALL
+Java_com_ece420_lab5_Piano_initModFactor(JNIEnv *env, jclass, jfloat factor) {
+    modFactor = factor;
 }
