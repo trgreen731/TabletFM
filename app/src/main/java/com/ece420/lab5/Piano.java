@@ -33,9 +33,10 @@ public class Piano extends View {
         yellow.setColor(Color.YELLOW);
         yellow.setStyle(Paint.Style.FILL);
         freq = 0;
-        key_freq = new double[]{130.81, 146.83, 138.59, 164.81, 155.56, 174.61, 195.99, 184.99, 220.00,
-                                207.65, 246.94, 233.08, 261.63, 293.66, 277.18, 329.63, 311.13, 349.23,
-                                391.99, 369.99, 440.00, 415.30, 493.88, 466.16};
+        key_freq = new double[]{261.63, 293.66, 277.18, 329.63, 311.13, 349.23,
+                                391.99, 369.99, 440.00, 415.30, 493.88, 466.16,
+                                523.25, 587.33, 554.37, 659.26, 622.25, 698.46,
+                                783.99, 738.99, 880.00, 830.61, 987.76, 932.33};
         //make the envelope functions and wavetable right here
         initTable(0);
         initAmpEnv(4800, 4800, 70, 4800);
