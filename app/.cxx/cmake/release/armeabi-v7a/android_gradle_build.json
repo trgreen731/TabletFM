@@ -53,6 +53,11 @@
           "workingDirectoryOrdinal": 0
         },
         {
+          "src": "C:\\Users\\trgre\\ECE420\\FinalProject\\TabletFM\\app\\src\\main\\cpp\\phaseOsc.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
           "src": "C:\\Users\\trgre\\ECE420\\FinalProject\\TabletFM\\app\\src\\main\\cpp\\ece420_main.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0

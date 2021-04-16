@@ -28,3 +28,11 @@
 8	476	640222160	CMakeFiles/echo.dir/audio_recorder.cpp.o	bb6177327f388514
 3	481	640222160	CMakeFiles/echo.dir/audio_main.cpp.o	1d4ef92584e1e4d5
 481	578	640222160	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/x86/libecho.so	ce8366420b8b4cd5
+5	181	640297818	CMakeFiles/echo.dir/phaseOsc.cpp.o	ae98e7d99ed35b5c
+7	492	640297818	CMakeFiles/echo.dir/audio_recorder.cpp.o	bb6177327f388514
+2	511	640297818	CMakeFiles/echo.dir/audio_main.cpp.o	1d4ef92584e1e4d5
+9	516	640297818	CMakeFiles/echo.dir/ece420_main.cpp.o	adf0b143cd2ab7a5
+517	772	640297818	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/x86/libecho.so	79958d362a89a51
+3	148	640298130	CMakeFiles/echo.dir/phaseOsc.cpp.o	ae98e7d99ed35b5c
+6	438	640298131	CMakeFiles/echo.dir/ece420_main.cpp.o	adf0b143cd2ab7a5
+438	552	640298131	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/x86/libecho.so	79958d362a89a51

@@ -28,3 +28,12 @@
 7	515	640222158	CMakeFiles/echo.dir/audio_recorder.cpp.o	25f0818db1eb5f4a
 3	532	640222158	CMakeFiles/echo.dir/audio_main.cpp.o	aa41beebf4b2b09a
 532	644	640222159	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libecho.so	a2e80b7b91f671cf
+6	637	640297665	CMakeFiles/echo.dir/audio_recorder.cpp.o	25f0818db1eb5f4a
+3	637	640297665	CMakeFiles/echo.dir/audio_main.cpp.o	aa41beebf4b2b09a
+2	215	640297762	CMakeFiles/echo.dir/phaseOsc.cpp.o	4f52b8a45861509c
+3	149	640297816	CMakeFiles/echo.dir/phaseOsc.cpp.o	4f52b8a45861509c
+5	435	640297816	CMakeFiles/echo.dir/ece420_main.cpp.o	ce96d5d154c50f23
+435	776	640297816	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libecho.so	8abcfd17adf46863
+3	142	640298129	CMakeFiles/echo.dir/phaseOsc.cpp.o	4f52b8a45861509c
+6	443	640298130	CMakeFiles/echo.dir/ece420_main.cpp.o	ce96d5d154c50f23
+444	552	640298130	C:/Users/trgre/ECE420/FinalProject/TabletFM/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libecho.so	8abcfd17adf46863
